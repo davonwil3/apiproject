@@ -6,11 +6,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import Modal from '@material-ui/core/Modal';
+
 function Mainpage(){
 
 
 
 
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleOpen = () => {
+      setOpen(true);
+    };
+   
+    const handleClose = () => {
+      setOpen(false);
+    };
+ 
 
 
 
@@ -28,7 +41,7 @@ function search(searchchoice){
     console.log("searched");
     render = <div className="grid-margin">
        
-                <Search headline={searchchoice} ></Search>
+                <Search headline={searchchoice} function={handleOpen} ></Search>
             </div>
 
     SetRender(render)
@@ -81,6 +94,14 @@ return(
     <Navbars function = {navChoice} search = {search}/>
 
    
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      <div className="flex-container modal-container"> Sorry the topic you searched for is not in our archive please try to search a different topic</div>
+    </Modal>
     {resetRender}
 
     <div className="flex-container footer">

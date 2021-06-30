@@ -21,8 +21,8 @@ return(
     <Navbar.Brand href="#home">US Headlines</Navbar.Brand>
     <Form inline className="search-container"  onSubmit={searchArticle}>
         
-            <FormControl type="text" placeholder="Search"  style={{width:'300px'}} placeholder="Search Article Topics" onChange= {e => setSearch(e.target.value) }/>
-            <Button type="submit"  onClick={()=> props.search(search)}>Submit</Button>
+            <FormControl type="text" className="searchbox" placeholder="Search"   placeholder="Search Article Topics" onChange= {e => setSearch(e.target.value) }/>
+            <Button type="submit" className="search-button" onClick={()=> props.search(search)}>Submit</Button>
 
     </Form>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

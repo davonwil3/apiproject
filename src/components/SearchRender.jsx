@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Headline from './headline'
 
+import Grid from './GridRender'
+
 
 function Search(props){
 
     var [articlearray, setArticle]= React.useState(null);
+
+
+    const [open, setOpen] = React.useState(true);
+    const [modal, setModal]= React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+      };
+     
+      const handleClose = () => {
+        setOpen(false);
+      };
    
     let render = <div></div>
 
@@ -26,11 +40,20 @@ function Search(props){
                 fetch('/search', options).then(response => response.json()).then(data =>{
                           
                     var newsData = data.newsObject
+
+                    
         
                     
+                        setArticle(newsData)
+                  
+                        if (newsData == null || newsData.length == 0){
+                            props.function()
+                        }
                     
-                   setArticle(newsData)
+                   
+
                    console.log("ran search");
+                  
                     
                     
                 })
@@ -41,10 +64,13 @@ function Search(props){
     
 
           
+          if (articlearray == null || articlearray.length == 0) { 
+                
+                render = <Grid headline='general' ></Grid>
 
-          if (articlearray){
-
-            render = <div>
+          }
+          else{
+            render = <div className=" flex-container render-wrapper" >
             
             <div class="grid-container top-grid">
             <div class="grid-item grid-1"><Headline title= {articlearray[0].title} urlToImage= {articlearray[0].urlToImage} section='main' url={articlearray[0].url}/></div>
@@ -62,11 +88,27 @@ function Search(props){
             </div>
           }
 
+       
+
+           
+          
+      
+        console.log(articlearray);
+          
+          
+              
+         
+
+         
+          
+
    
     
 return(
-<div>
+
     
+<div className="flex-container render-container" >
+   
     {render}
 </div>
 )

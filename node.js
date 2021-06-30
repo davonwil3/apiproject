@@ -30,9 +30,14 @@ app.post("/search", function(req, res){
 
       response.on("end", function(){
         const newsData = JSON.parse(data);
-        console.log(newsData);
+
+        var filtereddata = newsData.articles.filter( function(arraydata){
+
+          return  arraydata.urlToImage != null
+        })
+        
         res.json ({
-          newsObject: newsData.articles,
+          newsObject: filtereddata,
           
         })
 
@@ -59,15 +64,21 @@ app.post("/headlines", function(req, res){
       }
     })
 
-    response.on("end", function(){
+  response.on("end", function(){
       const newsData = JSON.parse(data)
-      console.log(newsData.articles[0]);
+
+     var filtereddata = newsData.articles.filter( function(arraydata){
+
+      return  arraydata.urlToImage != null
+    })
+     
+    console.log(filtereddata);
       res.json ({
-        newsObject: newsData.articles,
+        newsObject: filtereddata,
         
       })
 
-    })
+  })
 
   })
 

@@ -1,6 +1,9 @@
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+#content {
   height: 100%;
 }
 
@@ -19,7 +22,7 @@ html, body {
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #013365;
-  width: 100%;
+  width: 100vw;
 }
 
 .navlink-color {
@@ -43,6 +46,40 @@ html, body {
   -ms-flex-flow: nowrap;
       flex-flow: nowrap;
   margin-right: auto;
+  width: 430px;
+}
+
+.searchbox {
+  width: 70% !important;
+  margin-right: 10px;
+}
+
+.modal-container {
+  width: 450px;
+  height: 200px;
+  background-color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
 }
 
 .render-wrapper {
@@ -79,7 +116,6 @@ input:focus {
 .search-textbox {
   border: none;
   width: 200px;
-  height: 50px;
   border-radius: 10px;
 }
 
@@ -722,32 +758,40 @@ input:focus {
 
 @media only screen and (max-width: 803px) {
   .footer {
-    padding-left: unset;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding-left: unset;
+    padding-left: unset !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important;
+    padding-left: unset !important;
   }
 }
 
 @media only screen and (max-width: 653px) {
   .footer {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    height: 420px;
-    padding-left: unset;
+    height: 620px !important;
+    padding-left: unset !important;
   }
   .footer .Contact-info {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    width: 665px !important;
   }
 }
 
 @media only screen and (max-width: 520px) {
+  .search-container {
+    width: 100%;
+  }
+  .search-button {
+    margin-top: 15px;
+    width: 60%;
+  }
   .render-container {
     display: -webkit-box;
     display: -ms-flexbox;
